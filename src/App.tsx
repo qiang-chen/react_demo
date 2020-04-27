@@ -2,43 +2,27 @@
  * @description 
  * @author cq
  * @Date 2020-04-24 11:13:53
- * @LastEditTime 2020-04-27 15:35:31
+ * @LastEditTime 2020-04-27 19:59:59
  * @LastEditors cq
  */
 import React, { useState, useCallback, Suspense, FunctionComponent } from 'react';
 import { Button, Layout, Menu, Breadcrumb } from 'antd';
-import DragModal from "./pages/small/DragModal/index"
-import SelectModal from "./pages/small/SelectModal/index"
+
 import { Link, BrowserRouter } from 'react-router-dom';
 import './App.css';
 import { MenuUnfoldOutlined, MenuFoldOutlined, MailOutlined, UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons';
+import routeConfig from "./routes/routeConfig"
+
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
+
 
 type AppProps = {
 
 }
 
 const App: FunctionComponent<AppProps> = () => {
-  const [modalOpen, setModal] = useState("")
-  const [collapsed, setCollapsed] = useState(false);//控制左边导航是否打开
 
-  const toggle = () => {
-    setCollapsed(!collapsed)
-  };
-  // const [preview, setPreview] = useState(defaultPreview);
-  const handleSubmit = useCallback(
-    () => setModal(""),
-    []);
-  //useCallback  用它包住后就不会产生每次父组件更新的时候重新创建这个handleClose函数了
-  //只有第二个参数发生改变才会重新创建它
-  const handleClose = useCallback(
-    () => setModal(""),
-    []);
-
-  const onCollapse = (collapsed: any) => {
-    console.log(collapsed);
-  }
   return (
     <BrowserRouter>
       <Layout className='box'>
@@ -104,20 +88,7 @@ const App: FunctionComponent<AppProps> = () => {
               {/* <div className='box'>
               <RouteView children={this.props.children} />
             </div> */}
-              <Button type="primary" onClick={() => setModal("DragModal")}>拖拽弹框练习</Button>
-              <Button type="primary" onClick={() => setModal("SelectModal")}>select下拉菜单</Button>
-              {/* 拖拽弹框练习 */}
-              <DragModal
-                isVisable={modalOpen === "DragModal"}
-                onSubmit={handleSubmit}
-                onClose={handleClose}
-              />
-              {/* select下拉框练习 */}
-              <SelectModal
-                isVisable={modalOpen === "SelectModal"}
-                onSubmit={handleSubmit}
-                onClose={handleClose}
-              />
+              
             </Suspense>
           </Layout>
         </Layout>
