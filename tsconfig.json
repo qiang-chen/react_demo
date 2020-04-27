@@ -20,6 +20,16 @@
     "jsx": "react"
   },
   "include": [
-    "src", "config-overrides.js"
-  ]
+    "src",
+    "config-overrides.js"
+  ],
+  "baseUrl": "src",
+  "paths": {
+    "@/*": [
+      "*"
+    ],
+    "@com/*": [
+      "component/*"
+    ]
+  }
 }
