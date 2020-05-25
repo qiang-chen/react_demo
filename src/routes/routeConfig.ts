@@ -2,17 +2,15 @@
  * @description 
  * @author cq
  * @Date 2020-04-27 16:39:13
- * @LastEditTime 2020-05-25 18:24:54
+ * @LastEditTime 2020-05-25 19:55:23
  * @LastEditors cq
  */
 
 import React from 'react'
-import HOME from "../pages/antd/small/index"
 const routeConfig: any[]=[
   {
     path:"/pages/antd",
     name: "antd组件演练",
-    redirect:"/pages/antd/small",
     children:[
       {
         path: "/pages/antd/small",
@@ -31,7 +29,6 @@ const routeConfig: any[]=[
   }, {
     path: "/pages/left",
     name: "左侧测试demo",
-    redirect: "/pages/antd/left",
     children: [
       {
         path: "/pages/left/l",

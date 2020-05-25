@@ -1,13 +1,14 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /**
  * @description 
  * @author cq
  * @Date 2020-05-25 14:39:55
- * @LastEditTime 2020-05-25 19:19:38
+ * @LastEditTime 2020-05-25 19:46:26
  * @LastEditors cq
  */
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Menu } from 'antd';
-import { UserOutlined, MailOutlined } from '@ant-design/icons';
+import { UserOutlined } from '@ant-design/icons';
 import { Link, withRouter } from 'react-router-dom';
 import routeConfig from "../routes/routeConfig"
 
@@ -17,7 +18,7 @@ type deepMenuProps = {
 }
 
 const DeepMenu: FunctionComponent<deepMenuProps> = ({ location }) => {
-  const [path, setPath] = useState(location.pathname);
+  // const [path, setPath] = useState(location.pathname);
   const [openKey, setOpenKey] = useState("");
   // let path = props.location.pathname;
   // const openKey = this.openKey;
@@ -32,7 +33,6 @@ const DeepMenu: FunctionComponent<deepMenuProps> = ({ location }) => {
         return findDefault(routeConfig[i].children, curObj)
       } else {
         if (routeConfig[i].path === location.pathname) {
-          console.log(curObj, 456);
           return curObj
         }
       }
@@ -44,7 +44,6 @@ const DeepMenu: FunctionComponent<deepMenuProps> = ({ location }) => {
 
   useEffect(() => {
     const obj = findDefault(routeConfig, {});
-    console.log(obj, 234);
     setOpenKey(obj.path)
   }, []);
 
@@ -79,30 +78,30 @@ const DeepMenu: FunctionComponent<deepMenuProps> = ({ location }) => {
     }, []);
   }
   /* 判断当前登录用户对item是否有权限 */
-  const hasAuth = (item: { children?: any; key?: any; isPublic?: any; }) => {
-    const { key, isPublic } = item;
-    // const menus = memoryUtils.user.role.menus;
-    // const username = memoryUtils.user.username;
+  // const hasAuth = (item: { children?: any; key?: any; isPublic?: any; }) => {
+  //   const { key, isPublic } = item;
+  //   // const menus = memoryUtils.user.role.menus;
+  //   // const username = memoryUtils.user.username;
 
-    /* 
-    需要判断的情况:
-    1.如果当前用户是admin
-    2.如果当前item是公开的
-    3.当前用户有此item的权限:key有没有在menus中
-    */
-    // if (username === 'admin' || isPublic || menus.indexOf(key) !== -1) {
-    //   return true;
-    // } else if (item.children) {  //4.如果当前用户有此item的某个子item的权限
-    //   return !!item.children.find(child => menus.indexOf(child.key) !== -1)
-    // }
-    return false;
-  }
+  //   /* 
+  //   需要判断的情况:
+  //   1.如果当前用户是admin
+  //   2.如果当前item是公开的
+  //   3.当前用户有此item的权限:key有没有在menus中
+  //   */
+  //   // if (username === 'admin' || isPublic || menus.indexOf(key) !== -1) {
+  //   //   return true;
+  //   // } else if (item.children) {  //4.如果当前用户有此item的某个子item的权限
+  //   //   return !!item.children.find(child => menus.indexOf(child.key) !== -1)
+  //   // }
+  //   return false;
+  // }
   return (
     <>
       <Menu
         mode="inline"
         theme="dark"
-        selectedKeys={[path]}
+        defaultSelectedKeys={[location.pathname]}
         defaultOpenKeys={[openKey]}
       >
         {getMenuNOdes(routeConfig)}

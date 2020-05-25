@@ -2,7 +2,7 @@
  * @description demo功能演练区
  * @author cq
  * @Date 2020-04-27 19:34:08
- * @LastEditTime 2020-05-25 15:30:55
+ * @LastEditTime 2020-05-25 19:41:24
  * @LastEditors cq
  */
 
@@ -16,13 +16,13 @@ type SmallDemoProps = {
 }
 
 
-const SmallDemo: FunctionComponent<SmallDemoProps> = ({ }) => {
+const SmallDemo: FunctionComponent<SmallDemoProps> = () => {
   const [modalOpen, setModal] = useState("")
-  const [collapsed, setCollapsed] = useState(false);//控制左边导航是否打开
+  // const [collapsed, setCollapsed] = useState(false);//控制左边导航是否打开
 
-  const toggle = () => {
-    setCollapsed(!collapsed)
-  };
+  // const toggle = () => {
+  //   setCollapsed(!collapsed)
+  // };
   // const [preview, setPreview] = useState(defaultPreview);
   const handleSubmit = useCallback(
     () => setModal(""),
@@ -33,9 +33,9 @@ const SmallDemo: FunctionComponent<SmallDemoProps> = ({ }) => {
     () => setModal(""),
     []);
 
-  const onCollapse = (collapsed: any) => {
-    console.log(collapsed);
-  }
+  // const onCollapse = (collapsed: any) => {
+  //   console.log(collapsed);
+  // }
   return (
     <>
       <h1>我是small页面</h1>

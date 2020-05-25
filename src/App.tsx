@@ -2,21 +2,18 @@
  * @description 
  * @author cq
  * @Date 2020-04-24 11:13:53
- * @LastEditTime 2020-05-25 17:46:13
+ * @LastEditTime 2020-05-25 20:01:01
  * @LastEditors cq
  */
-import React, { useState, useCallback, Suspense, FunctionComponent } from 'react';
-import { Button, Layout, Menu, Breadcrumb } from 'antd';
+import React, { Suspense, FunctionComponent } from 'react';
+import { Layout } from 'antd';
 
-import { Link, BrowserRouter, Redirect, Switch, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import { MenuUnfoldOutlined, MenuFoldOutlined, MailOutlined, UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons';
 import routeConfig from "./routes/routeConfig"
 import LeftNav from "./components/LeftNav"
 import RouteView from './routes/RouteView';
-import Home from "./pages/antd/small/index"
-const { Header, Sider, Content } = Layout;
-const { SubMenu } = Menu;
+const { Sider, Content } = Layout;
 
 
 type AppProps = {
@@ -24,26 +21,25 @@ type AppProps = {
 }
 
 const App: FunctionComponent<AppProps> = () => {
-
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Layout style={{ minHeight: '100%' }}>
-          <Sider>
-            <LeftNav></LeftNav>
-          </Sider>
-          <Layout>
-            <h1>我是头</h1>
-            <Content style={{ margin: 20, backgroundColor: '#fff' }}>
+      <Layout style={{ minHeight: '100%' }}>
+        <Sider>
+          <LeftNav></LeftNav>
+        </Sider>
+        <Layout>
+          <h1>我是头</h1>
+          <Content style={{ margin: 20, backgroundColor: '#fff' }}>
+            <Suspense fallback={<div>Loading...</div>}>
               <RouteView
                 children={routeConfig}
               />
             我是页面主体部分
+            </Suspense>
           </Content>
-            {/* <Footer style={{ textAlign: 'center', color: '#ccc' }}>推荐使用谷歌浏览器,可以获得更佳页面操作体验</Footer> */}
-          </Layout>
+          {/* <Footer style={{ textAlign: 'center', color: '#ccc' }}>推荐使用谷歌浏览器,可以获得更佳页面操作体验</Footer> */}
         </Layout>
-      </Suspense>
+      </Layout>
     </BrowserRouter>
   );
 }

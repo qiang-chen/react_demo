@@ -13,7 +13,7 @@ type UIDemoProps = {
 }
 
 
-const UIDemo: FunctionComponent<UIDemoProps> = ({ }) => {
+const UIDemo: FunctionComponent<UIDemoProps> = () => {
 
   return (
     <>

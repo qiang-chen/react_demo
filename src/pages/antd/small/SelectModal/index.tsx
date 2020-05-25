@@ -7,7 +7,7 @@
  */
 
 import React, { FunctionComponent } from 'react'
-import { Modal, Form, Select, Button } from 'antd'
+import { Modal, Form, Select } from 'antd'
 import { FormProps } from 'antd/es/form';
 
 const { Option } = Select;
