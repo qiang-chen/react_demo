@@ -2,7 +2,7 @@
  * @description 
  * @author cq
  * @Date 2020-04-27 16:39:13
- * @LastEditTime 2020-05-25 16:13:34
+ * @LastEditTime 2020-05-25 18:24:54
  * @LastEditors cq
  */
 
@@ -34,14 +34,14 @@ const routeConfig: any[]=[
     redirect: "/pages/antd/left",
     children: [
       {
-        path: "/pages/antd/l",
-        name: "demo区",
+        path: "/pages/left/l",
+        name: "demo区2",
         component: React.lazy(() =>
           import('../pages/antd/small/index'))
       },
       {
-        path: "/pages/antjsd/ui",
-        name: "页面排版",
+        path: "/pages/left/uih",
+        name: "页面排版2",
         component: React.lazy(() =>
           import('../pages/antd/ui/index'))
       }

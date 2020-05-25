@@ -2,7 +2,7 @@
  * @description 路由表循环
  * @author cq
  * @Date 2020-05-25 15:16:47
- * @LastEditTime 2020-05-25 16:27:08
+ * @LastEditTime 2020-05-25 19:29:21
  * @LastEditors cq
  */
 import React, { FunctionComponent } from 'react';
@@ -15,27 +15,28 @@ type RouteViewProps = {
 // export default RouteView
 
 const RouteView: FunctionComponent<RouteViewProps> = ({ children }) => {
-  const deepRouteView = (children: any[]) => {
-    return <Switch>
-      {children.map((item: any, index: number) => {
+  const deepRouteView = (children: any[]): any => {
+    return <>
+      {children.map((item: any) => {
         if (item.children) {
-          deepRouteView(item.children)
+          return deepRouteView(item.children)
         } else {
           if (item.redirect) {
             console.log(item, "item.redirect")
-            return <Redirect to={item.redirect} key={index}></Redirect>
+            return <Redirect to={item.redirect} key={item.path}></Redirect>
           } else {
-            console.log(item)
-            return <Route path={item.path} key={index} component={Home}></Route>
+            console.log(item.path, 4578900)
+            return <Route path={item.path} key={item.path + 1} component={item.component}></Route>
           }
         }
       })}
-      {/* <Route path='/pages/antd/small' component={Home}></Route> */}
-    </Switch>
+    </>
   }
   return (
     <>
-      {deepRouteView(children)}
+      <Switch>
+        {deepRouteView(children)}
+      </Switch>
     </>
   );
 }

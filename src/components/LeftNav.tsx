@@ -2,34 +2,55 @@
  * @description 
  * @author cq
  * @Date 2020-05-25 14:39:55
- * @LastEditTime 2020-05-25 15:14:30
+ * @LastEditTime 2020-05-25 19:19:38
  * @LastEditors cq
  */
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { Menu } from 'antd';
 import { UserOutlined, MailOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import routeConfig from "../routes/routeConfig"
 
 const { SubMenu } = Menu;
 type deepMenuProps = {
-  
+  location: any
 }
 
-const DeepMenu: FunctionComponent<deepMenuProps> = ({ }) => {
+const DeepMenu: FunctionComponent<deepMenuProps> = ({ location }) => {
+  const [path, setPath] = useState(location.pathname);
+  const [openKey, setOpenKey] = useState("");
   // let path = props.location.pathname;
   // const openKey = this.openKey;
   /* 
   根据menu的数据数组生成对应的标签数组
   使用reduce() + 递归调用
   */
+  const findDefault = (routeConfig: any[], curObj: any): any => {
+    for (let i = 0; i < routeConfig.length; i++) {
+      if (routeConfig[i].children) {
+        curObj = routeConfig[i]
+        return findDefault(routeConfig[i].children, curObj)
+      } else {
+        if (routeConfig[i].path === location.pathname) {
+          console.log(curObj, 456);
+          return curObj
+        }
+      }
+    }
+    // routeConfig.forEach((item: any) => {
+
+    // })
+  }
+
+  useEffect(() => {
+    const obj = findDefault(routeConfig, {});
+    console.log(obj, 234);
+    setOpenKey(obj.path)
+  }, []);
+
   const getMenuNOdes = (menuList: any[]) => {
     // const path = props.location.pathname;
     return menuList.reduce((pre, item) => {
-      // // 如果当前用户有item对应的权限,才需要显示对应的菜单项
-      // if (hasAuth(item)) {
-
-      // }
       // 向pre添加<Menu.Item>
       if (!item.children) {
         pre.push((
@@ -41,10 +62,6 @@ const DeepMenu: FunctionComponent<deepMenuProps> = ({ }) => {
           </Menu.Item>
         ));
       } else {
-        // const cItem = item.children.find((cItem: { key: any; }) => path.indexOf(cItem.key) === 0);
-        // if (cItem) {
-        //   this.openKey = item.key;
-        // }
         pre.push((
           <SubMenu
             key={item.path}
@@ -85,8 +102,8 @@ const DeepMenu: FunctionComponent<deepMenuProps> = ({ }) => {
       <Menu
         mode="inline"
         theme="dark"
-      // selectedKeys={[path]}
-      // defaultOpenKeys={[openKey]}
+        selectedKeys={[path]}
+        defaultOpenKeys={[openKey]}
       >
         {getMenuNOdes(routeConfig)}
       </Menu>
@@ -95,4 +112,4 @@ const DeepMenu: FunctionComponent<deepMenuProps> = ({ }) => {
 }
 
 
-export default DeepMenu
+export default withRouter(DeepMenu);

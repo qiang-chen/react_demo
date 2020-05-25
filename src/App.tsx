@@ -2,7 +2,7 @@
  * @description 
  * @author cq
  * @Date 2020-04-24 11:13:53
- * @LastEditTime 2020-05-25 16:28:08
+ * @LastEditTime 2020-05-25 17:46:13
  * @LastEditors cq
  */
 import React, { useState, useCallback, Suspense, FunctionComponent } from 'react';
@@ -38,11 +38,6 @@ const App: FunctionComponent<AppProps> = () => {
               <RouteView
                 children={routeConfig}
               />
-              
-              {/* {RouteView(routeConfig)} */}
-              {/* <Switch>
-                <Route path='/pages/antd/small' component={Home}></Route>
-              </Switch> */}
             我是页面主体部分
           </Content>
             {/* <Footer style={{ textAlign: 'center', color: '#ccc' }}>推荐使用谷歌浏览器,可以获得更佳页面操作体验</Footer> */}
