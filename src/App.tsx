@@ -2,18 +2,19 @@
  * @description 
  * @author cq
  * @Date 2020-04-24 11:13:53
- * @LastEditTime 2020-04-28 18:19:54
+ * @LastEditTime 2020-05-25 16:28:08
  * @LastEditors cq
  */
 import React, { useState, useCallback, Suspense, FunctionComponent } from 'react';
 import { Button, Layout, Menu, Breadcrumb } from 'antd';
 
-import { Link, BrowserRouter, Redirect, Switch } from 'react-router-dom';
+import { Link, BrowserRouter, Redirect, Switch, Route } from 'react-router-dom';
 import './App.css';
 import { MenuUnfoldOutlined, MenuFoldOutlined, MailOutlined, UserOutlined, VideoCameraOutlined, UploadOutlined } from '@ant-design/icons';
 import routeConfig from "./routes/routeConfig"
-import DeepMenu from './components/DeepMenu';
-
+import LeftNav from "./components/LeftNav"
+import RouteView from './routes/RouteView';
+import Home from "./pages/antd/small/index"
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
 
@@ -26,45 +27,28 @@ const App: FunctionComponent<AppProps> = () => {
 
   return (
     <BrowserRouter>
-      <Switch>
-        <Layout className='box'>
-          <Header className='header'>
-            <div className='logoLeft'>
-              <img
-                src='https://www.tsinghua.edu.cn/publish/thu2018/images/logo_1.svg'
-                alt='清华网'
-              />
-            </div>
-          </Header>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Layout style={{ minHeight: '100%' }}>
+          <Sider>
+            <LeftNav></LeftNav>
+          </Sider>
           <Layout>
-            <Sider className="Sider">
-              <Menu
-                theme="dark"
-                mode="inline"
-                defaultSelectedKeys={['1']}
-                defaultOpenKeys={['sub1', 'g1']}
-              >
-                <DeepMenu
-                  routeConfig={routeConfig}
-                />
-              </Menu>
-            </Sider>
-            <Layout>
-              <Breadcrumb>
-                <Breadcrumb.Item>
-                  标题
-            </Breadcrumb.Item>
-              </Breadcrumb>
-              <Suspense fallback={<div />}>
-                {/* <div className='box'>
-              <RouteView children={this.props.children} />
-            </div> */}
-
-              </Suspense>
-            </Layout>
+            <h1>我是头</h1>
+            <Content style={{ margin: 20, backgroundColor: '#fff' }}>
+              <RouteView
+                children={routeConfig}
+              />
+              
+              {/* {RouteView(routeConfig)} */}
+              {/* <Switch>
+                <Route path='/pages/antd/small' component={Home}></Route>
+              </Switch> */}
+            我是页面主体部分
+          </Content>
+            {/* <Footer style={{ textAlign: 'center', color: '#ccc' }}>推荐使用谷歌浏览器,可以获得更佳页面操作体验</Footer> */}
           </Layout>
         </Layout>
-      </Switch>
+      </Suspense>
     </BrowserRouter>
   );
 }

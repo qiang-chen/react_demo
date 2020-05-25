@@ -2,7 +2,7 @@
  * @description demo功能演练区
  * @author cq
  * @Date 2020-04-27 19:34:08
- * @LastEditTime 2020-04-27 19:41:29
+ * @LastEditTime 2020-05-25 15:30:55
  * @LastEditors cq
  */
 
@@ -16,7 +16,7 @@ type SmallDemoProps = {
 }
 
 
-const SmallDemo: FunctionComponent<SmallDemoProps> = ({}) => {
+const SmallDemo: FunctionComponent<SmallDemoProps> = ({ }) => {
   const [modalOpen, setModal] = useState("")
   const [collapsed, setCollapsed] = useState(false);//控制左边导航是否打开
 
@@ -38,6 +38,7 @@ const SmallDemo: FunctionComponent<SmallDemoProps> = ({}) => {
   }
   return (
     <>
+      <h1>我是small页面</h1>
       <Button type="primary" onClick={() => setModal("DragModal")}>拖拽弹框练习</Button>
       <Button type="primary" onClick={() => setModal("SelectModal")}>select下拉菜单</Button>
       {/* 拖拽弹框练习 */}
