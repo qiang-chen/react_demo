@@ -2,7 +2,7 @@
  * @description 
  * @author cq
  * @Date 2020-04-24 11:13:53
- * @LastEditTime 2020-05-25 20:01:01
+ * @LastEditTime 2020-05-26 10:27:54
  * @LastEditors cq
  */
 import React, { Suspense, FunctionComponent } from 'react';
@@ -17,10 +17,23 @@ const { Sider, Content } = Layout;
 
 
 type AppProps = {
-
+  // props: any
 }
 
-const App: FunctionComponent<AppProps> = () => {
+const App: FunctionComponent<AppProps> = (props) => {
+  console.log(props);
+  // const menu = ['/pages/antd'];
+
+  // const getRoutes = () => {
+  //   routeConfig\menu
+  // }
+
+  // const routes = getRoutes();
+
+  // useEffect(() => {
+    
+    
+  // }, []);
   return (
     <BrowserRouter>
       <Layout style={{ minHeight: '100%' }}>
@@ -33,6 +46,7 @@ const App: FunctionComponent<AppProps> = () => {
             <Suspense fallback={<div>Loading...</div>}>
               <RouteView
                 children={routeConfig}
+                // location={props}
               />
             我是页面主体部分
             </Suspense>
