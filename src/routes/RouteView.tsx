@@ -2,13 +2,12 @@
  * @description 路由表循环
  * @author cq
  * @Date 2020-05-25 15:16:47
- * @LastEditTime 2020-05-26 13:58:20
+ * @LastEditTime 2020-05-26 14:03:43
  * @LastEditors cq
  */
-import React, { FunctionComponent, Fragment } from 'react';
+import React, { FunctionComponent } from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
 import NoFind from "../pages/NoFind/index"
-import Home from "../pages/antd/small/index"
 
 type RouteViewProps = {
   children: any[]
@@ -31,7 +30,6 @@ const RouteView: FunctionComponent<RouteViewProps> = (props) => {
     <Switch>
       <Redirect exact from="/" to="/pages/antd/small"></Redirect>
       {deepRouteView(children)}
-      {/* <Route path={"/home"} component={Home}></Route> */}
       <Route component={NoFind}></Route>
     </Switch>
   );
