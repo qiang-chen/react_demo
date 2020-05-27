@@ -2,7 +2,7 @@
  * @description 路由表循环
  * @author cq
  * @Date 2020-05-25 15:16:47
- * @LastEditTime 2020-05-26 14:03:43
+ * @LastEditTime 2020-05-27 11:17:17
  * @LastEditors cq
  */
 import React, { FunctionComponent } from 'react';
@@ -15,13 +15,11 @@ type RouteViewProps = {
 
 const RouteView: FunctionComponent<RouteViewProps> = (props) => {
   const { children } = props;
-  console.log(children);
   const deepRouteView = (children: any[]): any => {
     return children.map((item: any) => {
       if (item.children) {
         return deepRouteView(item.children);
       } else {
-        console.log(item);
         return <Route path={item.path} key={item.path} component={item.component}></Route>
       }
     })

@@ -3,7 +3,7 @@
  * @description 
  * @author cq
  * @Date 2020-05-25 14:39:55
- * @LastEditTime 2020-05-26 10:59:51
+ * @LastEditTime 2020-05-27 11:17:08
  * @LastEditors cq
  */
 import React, { FunctionComponent, useState, useEffect } from 'react';
@@ -44,7 +44,6 @@ const DeepMenu: FunctionComponent<deepMenuProps> = ({ location }) => {
 
   useEffect(() => {
     const obj = findDefault(routeConfig, {});
-    console.log(obj, 234);
     if (!obj){
       return
     }

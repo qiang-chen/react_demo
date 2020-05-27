@@ -2,13 +2,14 @@
  * @description demo功能演练区
  * @author cq
  * @Date 2020-04-27 19:34:08
- * @LastEditTime 2020-05-25 19:41:24
+ * @LastEditTime 2020-05-26 20:36:56
  * @LastEditors cq
  */
 
 import React, { FunctionComponent, useState, useCallback } from 'react'
 import DragModal from "./DragModal/index"
 import SelectModal from "./SelectModal/index"
+import ReduxDemoModal from "./ReduxDemoModal/index"
 import { Button } from 'antd'
 
 type SmallDemoProps = {
@@ -41,6 +42,7 @@ const SmallDemo: FunctionComponent<SmallDemoProps> = () => {
       <h1>我是small页面</h1>
       <Button type="primary" onClick={() => setModal("DragModal")}>拖拽弹框练习</Button>
       <Button type="primary" onClick={() => setModal("SelectModal")}>select下拉菜单</Button>
+      <Button type="primary" onClick={() => setModal("ReduxDemoModal")}>redux的拖拽</Button>
       {/* 拖拽弹框练习 */}
       <DragModal
         isVisable={modalOpen === "DragModal"}
@@ -50,6 +52,11 @@ const SmallDemo: FunctionComponent<SmallDemoProps> = () => {
       {/* select下拉框练习 */}
       <SelectModal
         isVisable={modalOpen === "SelectModal"}
+        onSubmit={handleSubmit}
+        onClose={handleClose}
+      />
+      <ReduxDemoModal
+        isVisable={modalOpen === "ReduxDemoModal"}
         onSubmit={handleSubmit}
         onClose={handleClose}
       />

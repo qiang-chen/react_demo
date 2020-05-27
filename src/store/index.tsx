@@ -10,7 +10,6 @@ import thunk from "redux-thunk";
 import { createLogger } from "redux-logger"
 
 
-//引入商品列表reducer
 import homeReducer from "./reducers/homeReducer";
 
 
