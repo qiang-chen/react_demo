@@ -2,7 +2,7 @@
  * @description 首页练习model
  * @author cq
  * @Date 2020-05-26 14:16:17
- * @LastEditTime 2020-05-27 14:23:06
+ * @LastEditTime 2020-05-27 17:16:59
  * @LastEditors cq
  */
 import produce from 'immer';
@@ -14,12 +14,10 @@ type Action<P = any> = {
   type: string
   payload?: P
 }
-type ImState = {
-  list: any[]
-}
+
 
 const initState: HomeReducerState= {
-  list: [1,2,3,4]
+  homeList: [1,2,3,4]
 }
 
 const homeReducer = (state = initState, action: Action) => {
@@ -30,9 +28,9 @@ const homeReducer = (state = initState, action: Action) => {
         ...state,
         ...payload
       }
-    case 'addItem':
+    case 'ADD_ITEM':
       return produce(state, draftState => {
-        draftState.list.push(payload.item)
+        draftState.homeList.push(payload.item)
       })
     default:
       return state
